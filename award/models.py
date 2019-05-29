@@ -20,11 +20,11 @@ class Project(models.Model):
 
     @classmethod
     def search_by_title(cls,search_term):
-        project = cls.objects.filter(title__icontains=search_term)
-        return project
+        projectis = cls.objects.filter(title__icontains=search_term)
+        return projectis
 
-    # def get_absolute_url(self):
-    #     return reverse('image-detail', kwargs={'pk': self.pk})
+    def get_absolute_url(self):
+        return reverse('project-detail', kwargs={'pk': self.pk})
 
     # def was_published_recently(self):
     #     return self.date_posted >= timezone.now() - datetime.timedelta(days=1)
