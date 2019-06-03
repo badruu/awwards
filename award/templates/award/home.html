@@ -1,0 +1,62 @@
+{% extends 'award/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2.5"></div>
+        <div class="col-md-7">
+            {% if projects %}
+            {% for project in projects %}
+            <div class="card" style="width: 18rem;">
+                    <img class="img-fluid" src="{{project.img.url}}" width="100%">
+                <div class="card-body">
+                    <h5 class="card-title">{{project.title}}</h5>
+                    <p class="card-text">{{project.description}}.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <img src="{{ project.profile.image.url }}" class="rounded-circle article-img" alt="...">
+                    <p>posted {{project.timestamp|timesince}} ago</p>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{project.link}}" class="card-link">See Project</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+                <a href="#"> <i class="fas fa-comment"></i> </a>
+            </div>
+            <!-- modal -->
+            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" style="margin-top: 200px">
+                <div class="modal-dialog modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalScrollableTitle">{{user}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{project.img.url}}" class="image-fluid" data-toggle="modal" data-target="#exampleModalScrollable">
+                        </div>
+                        <div class="modal-footer">
+                            <h4>{{project.description}}</h4>
+                            <h5 class="gallery-item-likes"><span class="visually-hidden">Ratings:</span><i class="fas fa-heart" aria-hidden="true"></i> {{project.rating}}</h5>
+                            <h5 class="gallery-item-comments"><span class="visually-hidden">Reviews:</span><i class="fas fa-comment" aria-hidden="true"></i> {{project.reviews|length}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h3>
+                No projects available now.
+            </h3>
+            {% endif %}
+        </div>
+        <div class="col-md-2.5"></div>
+    </div>
+</div>
+
+
+{% endblock content %}
