@@ -10,6 +10,10 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
+    @classmethod
+    def get_profile(cls,user):
+        profile=cls.objects.get(user=user)
+        return profile
 
     # overriding save and resizing then saving
     # def save(self,*args,**kwargs):
