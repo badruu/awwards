@@ -41,6 +41,7 @@ MODE=config("MODE", default="dev")
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django_comments',
     'django.contrib.sites',
     'users.apps.UsersConfig',
