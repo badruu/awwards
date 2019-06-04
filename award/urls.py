@@ -8,7 +8,7 @@ from .views import ProjectCreateView,ProjectListView,ProjectDetailView,UserProje
 
 urlpatterns=[
     url(r'^welcome$', views.welcome, name = 'award-welcome'),
-    url(r'^home$', views.home, name = 'home'),
+    url(r'^$', views.home, name = 'home'),
     url(r'^review/(\d+)/$',views.review,name='review'),
     url(r'^rate/(\d+)/$',views.rate,name='rate'),
     url(r'^accounts/profile/$', views.profile, name = 'profile'),
@@ -16,7 +16,7 @@ urlpatterns=[
     url(r'api/profile/profile-id/(?P<pk>[0-9]+)/$',views.ProfileDescription.as_view()),
     url(r'^api/projects/$', views.ProjectsList.as_view()),
     url(r'api/project/project-id/(?P<pk>[0-9]+)/$',views.ProjectDescription.as_view()),
-    url(r'^$', ProjectListView.as_view(), name = 'award-home'),
+    url(r'^poroject/list$', ProjectListView.as_view(), name = 'award-home'),
     url(r'^project/new/$',ProjectCreateView.as_view(), name='project-create'),
     url(r'^user/(?P<username>\w+)/$', UserProjectListView.as_view(), name='user-projects'),
     url(r'^project/(?P<pk>\d+)/$',ProjectDetailView.as_view(), name='project-detail'),

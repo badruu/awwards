@@ -1,30 +1,35 @@
 {% extends 'award/base.html' %}
-
-
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-2.5"></div>
-        <div class="col-md-7">
+        <div class="col-md-10">
+
+        <div class="jumbotron">
+            <h1 style="text-align:center">
+                PROJECTS
+            </h1>
+            <div class="col-md-5">
+
             {% if projects %}
+
             {% for project in projects %}
             <div class="card" style="width: 18rem;">
-                    <img class="img-fluid" src="{{project.img.url}}" width="100%">
+                <img class="img-fluid" src="{{project.img.url}}" width="100%">
                 <div class="card-body">
                     <h5 class="card-title">{{project.title}}</h5>
                     <p class="card-text">{{project.description}}.</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <img src="{{ project.profile.image.url }}" class="rounded-circle article-img" alt="...">
-                    <p>posted {{project.timestamp|timesince}} ago</p>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                    <a href="{{project.link}}" class="card-link">See Project</a>
-                    <a href="#" class="card-link">Another link</a>
+                <div class="profile">
+                    <img src="{{ project.poster.profile.image.url }}" class="rounded-circle article-img" alt="...">
+                    <small style="text-align:right">
+                        {{project.poster.profile.user}}
+                    </small>
                 </div>
-                <a href="#"> <i class="fas fa-comment"></i> </a>
+                <div class="card-body">
+                    <a href="{{project.link}}" class="btn btn-outline-info mb-4">See Project</a>
+                </div>
+                <a href="{% url 'review' project.id %}"> <i class="fas fa-comment"></i> </a><br>
+                <small>posted {{project.timestamp|timesince}} ago</small>
             </div>
             <!-- modal -->
             <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true" style="margin-top: 200px">
@@ -54,7 +59,9 @@
             </h3>
             {% endif %}
         </div>
-        <div class="col-md-2.5"></div>
+
+            </div>
+            </div>
     </div>
 </div>
 
